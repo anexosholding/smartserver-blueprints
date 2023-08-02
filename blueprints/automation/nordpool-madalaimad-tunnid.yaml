@@ -28,7 +28,7 @@ action:
   - variables:
       number_of_hours: !input number_of_hours
       electricity_prices: # Assuming the electricity price sensor stores the prices for the next 24 hours in a list attribute
-        "{{ state_attr(input.electricity_price_sensor, 'today') }}"
+        "{{ state_attr(input.electricity_price_sensor, 'tomorrow') }}"
 
   - choose: # Check if we have enough prices for the next 24 hours
       - conditions:
