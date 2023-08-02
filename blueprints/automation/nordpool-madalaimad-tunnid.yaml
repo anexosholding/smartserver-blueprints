@@ -1,6 +1,7 @@
 blueprint:
   name: Madalaima börsihinnaga tunnid
   description: Vali järjestikkuste tundide arv, mil on kõige odavam elektrit börsihinnaga tarbida.
+  source_url: https://github.com/antsmartti/smartserver-blueprints/blob/main/blueprints/automation/nordpool-madalaimad-tunnid.yaml
   domain: automation
   input:
     number_of_hours:
