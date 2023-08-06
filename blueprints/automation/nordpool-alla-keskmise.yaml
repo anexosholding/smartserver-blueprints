@@ -1,0 +1,39 @@
+blueprint:
+  name: "NordPool: keskmine hind"
+  description: Lülitab seadme sisse, kui börsihind on alla ööpäeva keskmise, samuti välja, kui üle keskmise
+
+  domain: automation
+  input:
+    price_entity:
+      name: NordPool sensor
+      selector:
+        entity:
+          multiple: false
+          device_class: monetary
+    light:
+      name: Valgustid
+      selector:
+        entity:
+          multiple: true
+          domain: light
+    switch:
+      name: Lülitid
+      selector:
+        entity:
+          multiple: true
+          domain: switch
+
+trigger:
+  - platform: time_pattern
+    minutes: 00
+    seconds: 15 # 15 sekundit pärast täistundi kontrollib hinda
+
+action:
+  service: >
+    {% if price_entity|float <= state_attr('sensor.nordpool_kwh_ee_eur_3_095_02', 'average') %}
+      light.turn_on
+    {% else %}
+      light.turn_off
+    {% endif %}
+  target:
+    entity_id: !input light
