@@ -10,12 +10,12 @@ blueprint:
         entity:
           multiple: false
           device_class: monetary
-    light:
-      name: Valgustid
-      selector:
-        entity:
-          multiple: true
-          domain: light
+#    light:
+#      name: Valgustid
+#      selector:
+#        entity:
+#          multiple: true
+#          domain: light
     switch:
       name: Lülitid
       selector:
@@ -34,15 +34,15 @@ trigger:
     seconds: 15 # väike viivitus täistunnist
 
 action:
-  - service: >
-      {% if price_now <= price_avg %}
-        light.turn_on
-      {% else %}
-        light.turn_off
-      {% endif %}
-    target:
-      entity_id: !input light
-    alias: "Hind on alla keskmise, lülitan tuled ümber"
+#  - service: >
+#      {% if price_now <= price_avg %}
+#        light.turn_on
+#      {% else %}
+#        light.turn_off
+#      {% endif %}
+#    target:
+#      entity_id: !input light
+#    alias: "Hind on alla keskmise, lülitan tuled ümber"
   - service: >
       {% if price_now <= price_avg %}
         switch.turn_on
