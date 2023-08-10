@@ -42,8 +42,8 @@ variables:
 
 trigger:
   - platform: time_pattern
-    minutes: 51
-    seconds: 35 # väike viivitus täistunnist
+    minutes: 00
+    seconds: 15 # väike viivitus täistunnist
 
 action:
   #  - service: >
