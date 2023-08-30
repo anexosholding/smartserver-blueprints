@@ -1,0 +1,23 @@
+blueprint:
+  name: Tuled kustu
+  description: KÕIK tuled lülitatakse välja määratud ajal.
+  domain: automation
+  input:
+    turn_off_time:
+      name: Väljalülitamise aeg
+      description: Kellaaega kujul HH:MM:SS
+      selector:
+        time: {}
+
+mode: single
+
+max_exceeded: silent
+
+trigger:
+  platform: time
+  at: !input "turn_off_time"
+
+action:
+  service: light.turn_off
+  target:
+    entity_id: all
