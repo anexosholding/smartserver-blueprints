@@ -1,6 +1,7 @@
 blueprint:
   name: Tuled kustu
   description: KÕIK tuled lülitatakse välja määratud ajal.
+  source_url: https://github.com/anexosholding/smartserver-blueprints/blob/main/blueprints/automation/tuled-kustu.yaml
   domain: automation
   input:
     turn_off_time:
