@@ -1,0 +1,32 @@
+blueprint:
+  name: Lekete teavitus
+  description: Saadab teavituse kõikidele seadmetele, kui leke on kuskil tuvastatud
+  source_url: https://github.com/anexosholding/smartserver-blueprints/blob/main/blueprints/automation/lekked.yaml
+  domain: automation
+  input:
+    text:
+      name: Teavitus
+      selector:
+        text:
+
+variables:
+  text: !input text
+
+trigger:
+  - event_data: {}
+    event_type: state_changed
+    platform: event
+
+condition:
+  - condition: template
+    value_template: '{{ trigger.event.data.new_state.attributes.device_class == "moisture" }}'
+  - condition: template
+    value_template: '{{ trigger.event.data.new_state.state == "on" }}'
+
+action:
+  service: notify.notify
+  data:
+    message: "{{ text }}"
+    title: "{{ trigger.event.data.new_state.attributes.friendly_name }} tuvastas lekke!"
+
+mode: single
