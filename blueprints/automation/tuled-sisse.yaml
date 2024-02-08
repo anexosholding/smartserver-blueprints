@@ -1,6 +1,7 @@
 blueprint:
   name: Triggered Light
   description: Turn on a light when motion is detected or door opened. Modification of Home Assistant blueprint. 
+  source_url: https://github.com/anexosholding/smartserver-blueprints/blob/main/blueprints/automation/tuled-sisse.yaml
   domain: automation
   input:
     motion_entity:
